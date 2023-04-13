@@ -13,20 +13,47 @@
 <body>
     <div class="sidebar">
         <div class="title">
-            Hometowns of Liverpool Players
+            Liverpool Players' Hometowns
         </div>
         <div class="description">
-            I put together a dataset of the hometowns of Liverpool players, exported a CSV, converted it to JSON, and
-            used it to create markers on a map.
+            By taking information from Wikipedia, I put together a dataset of the hometowns of Liverpool players,
+            exported it as a CSV, converted it to JSON, and used it to create markers on a map.
         </div>
         <div class="description">
-            Click a marker to see more information about each player.
+            Click a marker to see more information (birthday, nation, appearances) about each player.
         </div>
         <div class="description">
-            Color denotes nationality. I will add a legend later.
+            Color denotes position, please refer to the legend.
+        </div>
+
+        <!-- HTML !-->
+        <button id="fly-to-europe" class="button-18" role="button">Fly to Europe</button>
+        <button id="fly-to-south-america" class="button-18" role="button">Fly to South America</button>
+        <button id="fly-to-africa" class="button-18" role="button">Fly to Africa</button>
+
+
+    </div>
+    <div id="map">
+        <div class="map-overlay" id="legend">
+            <div>
+                <span class="legend-key" style="background-color: #62237d;"></span>
+                <span>Goalkeeper</span>
+            </div>
+            <div>
+                <span class="legend-key" style="background-color: #2f6e36;"></span>
+                <span>Defender</span>
+            </div>
+            <div>
+                <span class="legend-key" style="background-color: #e8af33;"></span>
+                <span>Midfielder</span>
+            </div>
+            <div>
+                <span class="legend-key" style="background-color: #f794e0;"></span>
+                <span>Forward</span>
+            </div>
         </div>
     </div>
-    <div id="map"></div>
+
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>

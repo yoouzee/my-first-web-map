@@ -320,14 +320,60 @@ const map = new mapboxgl.Map({
 liverpoolData.forEach(function (liverpoolRecord) {
     // create the popup
     const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-        `${liverpoolRecord['name']} (#${liverpoolRecord["jersey no"]}) was born here on ${ liverpoolRecord['birthday'] }. He plays as a ${ liverpoolRecord.position } for Liverpool and ${ liverpoolRecord.nation }, making ${ liverpoolRecord.appearances } league appearances thus far.`
+        `${liverpoolRecord['name']} (#${liverpoolRecord["jersey no"]}) was born here on ${liverpoolRecord['birthday']}. He has made ${liverpoolRecord.appearances} league appearances for Liverpool and also plays for ${liverpoolRecord.nation}.`
     );
+
+    // figure out the color of the marker based on the position variable
+
+    // by default, use gray
+    let color = '#ccc'
+
+    if (liverpoolRecord.position === 'Goalkeeper') {
+        color = '#62237d'
+    }
+
+    if (liverpoolRecord.position === 'Defender') {
+        color = '#2f6e36'
+    }
+
+    if (liverpoolRecord.position === 'Midfielder') {
+        color = '#e8af33'
+    }
+
+    if (liverpoolRecord.position === 'Forward') {
+        color = '#f794e0'
+    }
+
 
     // map center point
     new mapboxgl.Marker({
-        color: "#2f6e36"
+        color: color
     })
         .setLngLat([liverpoolRecord.longitude, liverpoolRecord.latitude])
         .setPopup(popup)
         .addTo(map);
+})
+
+// event listeners
+
+$('#fly-to-europe').on('click', function() {
+    map.flyTo({
+        center: [8.2275, 47.8182],
+        zoom: 4.5
+    })
+})
+
+$('#fly-to-south-america').on('click', function() {
+    map.flyTo({
+        center: [-50, -13],
+        zoom: 3.5
+    })
+})
+
+
+$('#fly-to-africa').on('click', function() {
+    map.flyTo({
+        center: [8, 17],
+        zoom: 4
+    })
 })
